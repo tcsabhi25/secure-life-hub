@@ -59,26 +59,4 @@
     if (e.target === this) closeModal();
   });
 
-  // FORM HANDLERS
-  function handleFormSubmit(btn) {
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent! We\'ll contact you soon.';
-      btn.style.background = '#22c55e';
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.style.background = '';
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message & Get Free Advice';
-      }, 4000);
-    }, 1800);
-  }
-  function handleCallbackSubmit(btn) {
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Requesting...';
-    setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-check-circle"></i> Callback Requested! We\'ll call shortly.';
-      btn.style.background = '#22c55e';
-      setTimeout(() => { closeModal(); btn.disabled = false; btn.style.background = ''; btn.innerHTML = '<i class="fas fa-phone"></i> Request Callback Now'; }, 2500);
-    }, 1500);
-  }
+  // FORM HANDLERS - Now handled by form-handler.js with EmailJS and Twilio integration

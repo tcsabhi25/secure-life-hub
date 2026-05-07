@@ -1012,7 +1012,7 @@
   }
 
   .service-card:hover .service-icon {
-      background: linear-gradient(135deg, #fdfbf4, var(--gold-light));
+      background: linear-gradient(135deg, #0a0a0a, var(--gold-light));
   }
 
   .service-card:hover .service-icon {

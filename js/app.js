@@ -49,11 +49,11 @@
   // MODAL
   function openModal() {
     document.getElementById('callbackModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
   }
   function closeModal() {
     document.getElementById('callbackModal').classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
   }
   document.getElementById('callbackModal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();

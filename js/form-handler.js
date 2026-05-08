@@ -32,7 +32,6 @@ function initEmailJS() {
   if (typeof emailjs !== 'undefined') {
     try {
       emailjs.init(FORM_CONFIG.emailjs.publicKey);
-      console.log('✓ EmailJS initialized successfully with key:', FORM_CONFIG.emailjs.publicKey.substring(0, 8) + '...');
     } catch (error) {
       console.error('❌ Failed to initialize EmailJS:', error);
     }

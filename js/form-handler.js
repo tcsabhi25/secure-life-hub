@@ -14,8 +14,8 @@ const FORM_CONFIG = {
   
   // Twilio Configuration (for WhatsApp/SMS)
   twilio: {
-    accountSID: 'AC_XXXXX', // Replace with your Twilio Account SID
-    authToken: 'YOUR_AUTH_TOKEN_XXXXX', // Replace with your Twilio Auth Token
+    accountSID: '', // Replace with your Twilio Account SID
+    authToken: '', // Replace with your Twilio Auth Token
     fromNumber: '+918075445484', // Your Twilio number (for SMS)
     businessPhoneID: 'PHONE_ID_XXXXX', // Your WhatsApp Business Phone ID
   },

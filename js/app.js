@@ -59,4 +59,49 @@
     if (e.target === this) closeModal();
   });
 
+  // ACHIEVEMENTS CAROUSEL
+  const carouselTrack = document.querySelector('.carousel-track');
+  const carouselSlides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const indicators = document.querySelectorAll('.indicator');
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const translateX = -currentIndex * 100;
+    carouselTrack.style.transform = `translateX(${translateX}%)`;
+    
+    indicators.forEach((indicator, index) => {
+      indicator.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % carouselSlides.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + carouselSlides.length) % carouselSlides.length;
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+
+  if (prevBtn && nextBtn) {
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+  }
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => goToSlide(index));
+  });
+
+  // Auto-play carousel
+  setInterval(nextSlide, 5000);
+
   // FORM HANDLERS - Now handled by form-handler.js with EmailJS and Twilio integration

@@ -7,10 +7,15 @@
   const hamburgerMenu = document.getElementById('hamburger');
   const mobMenu = document.getElementById('mobileMenu');
   hamburgerMenu.addEventListener('click', () => {
-    mobMenu.style.display = mobMenu.style.display === 'flex' ? 'none' : 'flex';
+    const isOpen = mobMenu.style.display === 'flex';
+    mobMenu.style.display = isOpen ? 'none' : 'flex';
+    hamburgerMenu.classList.toggle('open', !isOpen);
   });
   mobMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => { mobMenu.style.display = 'none'; });
+    a.addEventListener('click', () => {
+      mobMenu.style.display = 'none';
+      hamburgerMenu.classList.remove('open');
+    });
   });
 
   // SCROLL REVEAL

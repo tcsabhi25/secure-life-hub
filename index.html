@@ -430,55 +430,97 @@
                 <p class="section-sub">Real stories from real families whose lives have been secured by Secure Life Hub.
                 </p>
             </div>
-            <div class="testi-grid">
-                <div class="testi-card reveal">
-                    <div class="testi-quote">"</div>
-                    <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">Manikandan sir has been our family's insurance Consultant for over 15 years.
-                        When
-                        we needed to make a claim after my father's hospitalisation, he personally helped us through
-                        every step. The settlement was smooth and fast. We trust Secure Life Hub completely.</p>
-                    <div class="testi-footer">
-                        <div class="testi-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <div class="testi-name">Rajesh Kumar</div>
-                            <div class="testi-role">Business Owner, Thrissur</div>
+            <div class="review-panel reveal">
+                <div class="review-form-card">
+                    <div class="review-form-title">Share Your Review</div>
+                    <p class="review-form-desc">Write a quick review and your feedback will appear instantly in the latest reviews section.</p>
+                    <div class="review-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Your Name *</label>
+                                <input type="text" id="review-name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Rating *</label>
+                                <select id="review-rating">
+                                    <option value="5">5 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="1">1 Star</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="testi-card reveal">
-                    <div class="testi-quote">"</div>
-                    <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">I was confused about which health insurance plan to choose for my family.
-                        Manikandan sir explained everything clearly, understood our needs, and suggested the perfect
-                        Star Health plan. His guidance was like talking to a trusted family elder, not just an consultant.
-                    </p>
-                    <div class="testi-footer">
-                        <div class="testi-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <div class="testi-name">Priya Nair</div>
-                            <div class="testi-role">Teacher, Thiruvillwamala</div>
+                        <div class="form-group">
+                            <label>Your Review *</label>
+                            <textarea id="review-message" placeholder="Write your review..." required></textarea>
                         </div>
-                    </div>
-                </div>
-                <div class="testi-card reveal">
-                    <div class="testi-quote">"</div>
-                    <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">Secure Life Hub has protected my family for over a decade. When I lost my job
-                        temporarily, Manikandan sir helped me understand my policy benefits and ensured I was fully
-                        covered during a difficult time. That kind of genuine care is why we will always choose Secure Life Hub.</p>
-                    <div class="testi-footer">
-                        <div class="testi-avatar"><i class="fas fa-user"></i></div>
-                        <div>
-                            <div class="testi-name">Suresh Menon</div>
-                            <div class="testi-role">Engineer, Thrissur District</div>
-                        </div>
+                        <button class="btn-form" type="button" onclick="submitReview()">
+                            <i class="fas fa-paper-plane"></i> Submit Review
+                        </button>
+                        <div class="review-feedback" id="reviewFeedback"></div>
                     </div>
                 </div>
             </div>
+            <div class="section-sub" style="margin-top:32px;">Latest visitor reviews appear below.</div>
+            <div class="review-summary">
+                <div class="testi-grid" id="featuredReviews"></div>
+                <div class="review-more hidden" id="moreReviews">
+                    <div class="testi-grid" id="moreReviewsGrid"></div>
+                </div>
+                <button class="btn-secondary" id="toggleMoreBtn" type="button" onclick="toggleMoreReviews()">
+                    View More Reviews
+                </button>
+            </div>
+            <template id="review-card-template">
+                <div class="testi-card" data-review-id="">
+                    <div class="testi-quote">"</div>
+                    <div class="testi-stars"></div>
+                    <p class="testi-text"></p>
+                    <div class="testi-footer">
+                        <div class="testi-avatar"><i class="fas fa-user"></i></div>
+                        <div>
+                            <div class="testi-name"></div>
+                            <div class="testi-role"></div>
+                        </div>
+                    </div>
+                    <div class="review-card-meta"></div>
+                </div>
+            </template>
+            <template id="review-editor-template">
+                <div class="review-editor">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input id="edit-name-" type="text" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Rating</label>
+                            <select id="edit-rating-">
+                                <option value="5">5 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="2">2 Stars</option>
+                                <option value="1">1 Star</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Review</label>
+                        <textarea id="edit-message-"></textarea>
+                    </div>
+                    <div class="review-editor-actions">
+                        <button class="btn-form" type="button" onclick="saveReviewEdit('')">Save Review</button>
+                        <button class="btn-secondary" type="button" onclick="cancelReviewEdit()">Cancel</button>
+                    </div>
+                    <div class="review-feedback" id="editFeedback-"></div>
+                </div>
+            </template>
+            <template id="empty-review-card-template">
+                <div class="testi-card">
+                    <p class="testi-text">No reviews are available yet. Be the first to share your experience.</p>
+                </div>
+            </template>
         </div>
     </section>
 
